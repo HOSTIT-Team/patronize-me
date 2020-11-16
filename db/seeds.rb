@@ -5,3 +5,19 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+require "faker"
+# require_relative "../app/models/user.rb"
+# Faker::Name.first_name
+# Faker::Name.last_name
+# Faker::Internet.safe_email(name: )
+
+100.times do 
+  first_name = Faker::Name.first_name
+  last_name = Faker::Name.last_name
+  email = Faker::Internet.safe_email(name: first_name)
+  puts first_name, last_name, email
+
+  user = User.new(email: email, first_name: first_name, last_name: last_name)
+  user.save!
+
+end
