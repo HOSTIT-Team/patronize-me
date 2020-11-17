@@ -1,2 +1,25 @@
-<h1>Pages#home</h1>
-<p>Find me in app/views/pages/home.html.erb</p>
+<header>
+  <%= link_to(image_tag("/assets/logo.svg", :alt => "logo", :title => "Home"), "/") %>
+  <nav>
+    <a href="#">Sign Up</a>
+    <a href="#">Sign In</a>
+    <a href="#">Contact</a>
+  </nav>
+</header>
+
+<section class="hero">
+  <h1>Book independent artists.</h1>
+  <a href="#" class="button">Discover</a>
+</section>
+
+<section class="discover">
+  <h1>Discover new talent.</h1>
+  <h2>Empower local scenes.</h2>
+</section>
+
+<section class="about">
+  <h1>people need art & the artworld needs patrons</h1>
+  <h2>we are here to bring them together.</h2>
+  <a href="#" class="button-about">About Us</a>
+</section>
+
