@@ -13,7 +13,7 @@ class OffersController < ApplicationController
 
   def create
     @offer = Offer.new(offer_params)
-    @offer.user = User.last
+    @offer.user = current_user
     if @offer.save
       redirect_to offer_path(@offer)
     else
