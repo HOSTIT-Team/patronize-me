@@ -1,5 +1,6 @@
 class OffersController < ApplicationController
   before_action :find_offer, only: [:show]
+
   def index
     @offers = Offer.all
   end

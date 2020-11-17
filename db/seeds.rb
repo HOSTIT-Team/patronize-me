@@ -20,8 +20,8 @@ require "faker"
   10.times do
     offer = Offer.new(user: user)
     offer.price = rand(50..1500)
-    offer.category = Offer::CATEGORIES.sample
-    offer.city = Offer::CATEGORIES.sample
+    offer.category = Offer::CATEGORY.sample
+    offer.city = Offer::CITY.sample
     offer.description = Faker::Lorem.paragraph(sentence_count: 2)
     offer.delivery_type = []
 end
