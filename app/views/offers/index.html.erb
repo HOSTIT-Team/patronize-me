@@ -1,0 +1,13 @@
+<h4>NAVBAR</h4>
+<br>
+<h1>OFFERS INDEX</h1>
+<br>
+<h4>CARDS</h4>
+<% @offers.each do |offer| %>
+  <p>Title: <%= offer.title %></p>
+  <p>Category: <%= offer.category %></p>
+  <p>Price: <%= offer.price %> EUR</p>
+  <p>City: <%= offer.city %></p>
+<% end %>
+<br>
+<h4>FOOTER</h4>
