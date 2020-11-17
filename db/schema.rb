@@ -27,22 +27,12 @@ ActiveRecord::Schema.define(version: 2020_11_17_141746) do
     t.index ["user_id"], name: "index_bookings_on_user_id"
   end
 
-  create_table "categories", force: :cascade do |t|
-    t.string "name"
-    t.bigint "offer_id"
-    t.index ["offer_id"], name: "index_categories_on_offer_id"
-  end
-
-  create_table "cities", force: :cascade do |t|
-    t.string "name"
-    t.bigint "offer_id"
-    t.index ["offer_id"], name: "index_cities_on_offer_id"
-  end
-
   create_table "offers", force: :cascade do |t|
     t.string "title"
+    t.string "category"
     t.integer "price"
     t.bigint "user_id", null: false
+    t.string "city"
     t.string "delivery_type"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
@@ -77,8 +67,6 @@ ActiveRecord::Schema.define(version: 2020_11_17_141746) do
 
   add_foreign_key "bookings", "offers"
   add_foreign_key "bookings", "users"
-  add_foreign_key "categories", "offers"
-  add_foreign_key "cities", "offers"
   add_foreign_key "offers", "users"
   add_foreign_key "reviews", "bookings"
 end
