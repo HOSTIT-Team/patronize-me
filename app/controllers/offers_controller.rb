@@ -1,5 +1,5 @@
 class OffersController < ApplicationController
-  before_action :find_restaurant, only: [:show]
+  before_action :find_offer, only: [:show]
 
   def index
     @offers = Offer.all
@@ -10,7 +10,7 @@ class OffersController < ApplicationController
 
   private
 
-  def find_restaurant
-    @restaurant = Restaurant.find(params[:id])
+  def find_offer
+    @offer = Offer.find(params[:id])
   end
 end
