@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_11_16_160458) do
+ActiveRecord::Schema.define(version: 2020_11_17_141746) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -18,7 +18,7 @@ ActiveRecord::Schema.define(version: 2020_11_16_160458) do
   create_table "bookings", force: :cascade do |t|
     t.bigint "user_id", null: false
     t.bigint "offer_id", null: false
-    t.string "status"
+    t.string "status", default: "pending"
     t.date "day"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
@@ -36,6 +36,7 @@ ActiveRecord::Schema.define(version: 2020_11_16_160458) do
     t.string "delivery_type"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.text "description"
     t.index ["user_id"], name: "index_offers_on_user_id"
   end
 
@@ -58,7 +59,7 @@ ActiveRecord::Schema.define(version: 2020_11_16_160458) do
     t.datetime "updated_at", precision: 6, null: false
     t.string "first_name"
     t.string "last_name"
-    t.text "description"
+    t.text "bio"
     t.string "phone_number"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
