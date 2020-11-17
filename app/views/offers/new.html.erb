@@ -1,0 +1,24 @@
+
+<div class="back">
+  <%= link_to root_path do %>
+
+    <i class="fa fa-arrow-left"></i> BACK
+  <% end %>
+</div>
+
+<div class='container'>
+
+  <h1>New offer</h1>
+  <%= simple_form_for @offer do |f| %>
+  <%= f.input :title %>
+  <%= f.input :category, collection: Offer::CATEGORY %> <!-- check how to extract a drop down fron category options -->
+  <%= f.input :price %>  <!-- do i need to specify it's an integer? -->
+  <%#= f.input :description %>  <!-- text box-->
+  <%= f.input :city, collection: Offer::CITY %>
+  <%=  f.input :delivery_type %>  <!-- 2 defined options-->
+  <%#= f.input :avatar, as: :file, input_html: { accept: User::PHOTO } %>
+
+  <%= f.submit "Add", class: "btn btn-primary" %>
+  <% end %>
+
+</div>
