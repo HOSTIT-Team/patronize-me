@@ -5,9 +5,9 @@ class Offer < ApplicationRecord
 
   CITY = ["Amsterdam", "Berlin", "London", "Paris"]
   CATEGORY = ["DJ", "Live", "Music", "Painting", "Dance", "Singing", "Acting"]
+  DELIVERY = ["Deadline", "Day"]
 
   validates :title, :category, :price, :city, :delivery_type, presence: true
   validates :price, numericality: { only_integer: true }, inclusion: { in: 1..100000 }
   validates :title, length: { maximum: 100 }
-  validates :delivery_type, inclusion: { in: ["deadline", "day"]}
 end
