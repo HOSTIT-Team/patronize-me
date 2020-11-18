@@ -1,0 +1,35 @@
+.offer-card {
+  margin-bottom: 20px;
+  margin-right: 20px;
+  padding: 20px;
+  border: solid;
+  border-width: 1px;
+  width: 340px;
+  height: 420px;
+  border-radius: 5px;
+  p {
+    color: black;
+  }
+}
+
+.offer-card-image {
+    background-image: url("https://images.unsplash.com/photo-1583376097610-516c37bb66ba?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=668&q=80");
+    height: 380px;
+    object-fit: fill;
+  }
+
+.offer-card-info {
+  background-color: white;
+  color: black;
+  border-radius: 5px;
+  width: 260px;
+  padding: 10px;
+}
+
+.offer-card-button {
+  background: #c80000;
+  color: white;
+  padding: 10px 15px;
+  border-radius: 3px;
+  font-size: 24px;
+}

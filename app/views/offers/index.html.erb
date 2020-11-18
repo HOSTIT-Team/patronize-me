@@ -1,0 +1,31 @@
+<div class="container">
+<h4>NAVBAR</h4>
+
+  <div class="search-bar">
+    <%= simple_form_for @offer do |f| %>
+    <%= f.input :category, :label => "Artform", collection: Offer::CATEGORY %>
+    <%= f.input :city, :label => "Location", collection: Offer::CITY %>
+    <%= f.submit "Search", class: "btn btn-primary" %>
+    <% end %>
+  </div>
+
+  <div class="offer-cards-container">
+    <% @offers.each do |offer| %>
+      <div class="offer-card">
+        <div class="offer-card-image" >
+        <div class="offer-card-info">
+          <h4><%= offer.title %></h4>
+          <p><i class="fas fa-hashtag"></i> <%= offer.category %></p>
+          <p><i class="fas fa-euro-sign"> <%= offer.price %></i></p>
+          <p><i class="fas fa-map-marker"> <%= offer.city %></i></p>
+        </div>
+        <%= link_to "BOOK ME", new_offer_path, class: "offer-card-button" %>
+      </div>
+      </div>
+    <% end %>
+  </div>
+  <br>
+<p><%= link_to "HOME", root_path %></p>
+<h4>FOOTER</h4>
+</div>
+

@@ -1,19 +1,25 @@
 class OffersController < ApplicationController
   before_action :find_offer, only: [:show]
+  skip_before_action :authenticate_user!, only: :index
+
   def index
-    @offers = Offer.all
+    @offers = policy_scope(Offer)
+    @offer = Offer.new
   end
 
   def show
+    authorize @offer
   end
 
   def new
     @offer = Offer.new
+    authorize @offer
   end
 
   def create
     @offer = Offer.new(offer_params)
     @offer.user = current_user
+    authorize @offer
     if @offer.save
       redirect_to offer_path(@offer)
     else
