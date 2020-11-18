@@ -1,10 +1,43 @@
-<div class="back">
-  <%= link_to root_path do %>
-    <i class="fa fa-arrow-left"></i> BACK
+<header>
+  <%= image_tag "patronize_me_logo.svg" %>
+  <nav>
+    <a href="#">Contact</a>
+    <a href="#">Dashboard</a>
+    <a href="#">Sign Out</a>
+  </nav>
+</header>
+
+<br>
+
+<section class=main>
+  <br>
+  <br>
+  <br>
+  <div class="back">
+    <%= link_to root_path do %>
+      <i class="fa fa-arrow-left"></i> BACK
+    <% end %>
+  </div>
+
+    <h1><%= @offer.title %></h1>
+    <h2><%="#{@offer.user.first_name} #{@offer.user.last_name}"%></h2>
+
+    <p><%= @offer.description %></p>
+
+  <div class="artist-card">
+  <!-- image place holder -->
+  <!-- <button> <%#= button_to "Book", { action: "booking confirmation path placeholder", class: "btn btn-primary"}, :method => :get %> </button> -->
+  </div>
+<div class=booking>
+  <% if policy(Booking).create? %>
+      <h1>Make a booking request</h1>
+      <%= simple_form_for(booking = Booking.new) do |f| %>
+      <% booking.offer = @offer  %>
+      <%= f.input :day, :label => "Event date"  %>
+      <%= f.input :comment, :label => "Is there anything else the artist should know?" %>
+      <%= f.submit "Submit request", class: "btn btn-primary" %>
+    <% end %>
   <% end %>
+  <p><%= link_to "Back to offers", offers_path %></p>
 </div>
-<h1><%= @offer.title %></h1>
-<h2><%="#{@offer.user.first_name} #{@offer.user.last_name}"  %></h2>
-<div class="artist-card">
-<!-- image place holder -->
-<button> <%#= button_to "Book", { action: "booking confirmation path placeholder", class: "btn btn-primary"}, :method => :get %> </button>
+</section>

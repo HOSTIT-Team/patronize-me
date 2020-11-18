@@ -5,7 +5,7 @@ class Offer < ApplicationRecord
   has_one_attached :banner
 
   CITY = ["Amsterdam", "Berlin", "London", "Paris"]
-  CATEGORY = ["DJ", "Live", "Music", "Painting", "Dance", "Singing", "Acting"]
+  CATEGORY = ["DJ", "Live Music", "Painting", "Dance", "Singing", "Acting"]
   DELIVERY = ["Deadline", "Day"]
 
   validates :title, :category, :price, :city, :delivery_type, presence: true
