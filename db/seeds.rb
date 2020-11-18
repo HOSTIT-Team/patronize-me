@@ -15,7 +15,6 @@ require "faker"
   user.password = "123456"
   user.phone_number = Faker::PhoneNumber.cell_phone_in_e164
   user.bio = Faker::TvShows::HowIMetYourMother.quote
-  # need to add avatar
   user.save!
 
   10.times do
@@ -24,31 +23,21 @@ require "faker"
     offer.title = Faker::Hipster.sentence(word_count: rand(3))
     offer.category = Offer::CATEGORY.sample
     offer.city = Offer::CITY.sample
-    # need to add banner
     offer.description = Faker::Lorem.paragraph(sentence_count: 2)
     offer.delivery_type = Offer::DELIVERY.sample
     offer.save!
   end
 end
 
-# User.all.each do |user|
+User.all.each do |user|
   
-#   10.times do 
-#     offers = Offer.where.not(user_id: user.id)
-#     puts offers
-#     # booking = Booking.new(offer_id: offers.sample, user_id: user.id)
-#     # booking.day = Faker::Date.forward(days: rand(1..30))
-#     # booking.comment = Faker::Lorem.question(word_count: rand(4..12))
-#     # booking.save!
-#   end
-# end
+  10.times do 
+    offers = Offer.where.not(user_id: user.id)
+    puts offers
+    # booking = Booking.new(offer_id: offers.sample, user_id: user.id)
+    # booking.day = Faker::Date.forward(days: rand(1..30))
+    # booking.comment = Faker::Lorem.question(word_count: rand(4..12))
+    # booking.save!
+  end
+end
 
-# https://c1.staticflickr.com/3/2889/33773377295_3614b9db80_b.jpg > san_francisco.jpg
-# curl https://pbs.twimg.com/media/DC1Xyz3XoAAv7zB.jpg > boris_retreat_2017.jpg
-# # rails c
-# Cloudinary::Uploader.upload("san_francisco.jpg")
-# Cloudinary::Uploader.upload("boris_retreat_2017.jpg")
-# rm san_francisco.jpg boris_retreat_2017.jpg
-
-#  for attaching the images to model
-# @message.image.attach(io: File.open('/path/to/file'), filename: 'file.pdf')
