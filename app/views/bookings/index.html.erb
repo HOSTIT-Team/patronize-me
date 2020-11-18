@@ -1,0 +1,23 @@
+<h4>NAVBAR</h4>
+<div class="container">
+  <div class="search-bar">
+    </div>
+  <div class="bookings-requests-cards-container">
+    <% @bookings_requests.each do |booking| %>
+      <div class="booking-card">
+        <div class="booking-card-image">
+        <div class="booking-card-info">
+          <h4><%= booking.offer.title %></h4>
+          <p><i class="fas fa-hashtag"></i> <%= booking.offer.category %></p>
+          <p><i class="fas fa-euro-sign"> <%= booking.offer.price %></i></p>
+          <p><i class="fas fa-map-marker"> <%= booking.day %></i></p>
+
+        </div>
+      </div>
+      </div>
+    <% end %>
+  </div>
+  <br>
+</div>
+<p><%= link_to "HOME", root_path %></p>
+<h4>FOOTER</h4>
