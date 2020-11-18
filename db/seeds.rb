@@ -15,6 +15,7 @@ require "faker"
   user.password = "123456"
   user.phone_number = Faker::PhoneNumber.cell_phone_in_e164
   user.bio = Faker::TvShows::HowIMetYourMother.quote
+  # need to add avatar
   user.save!
 
   10.times do
@@ -23,6 +24,7 @@ require "faker"
     offer.title = Faker::Hipster.sentence(word_count: rand(3))
     offer.category = Offer::CATEGORY.sample
     offer.city = Offer::CITY.sample
+    # need to add banner
     offer.description = Faker::Lorem.paragraph(sentence_count: 2)
     offer.delivery_type = Offer::DELIVERY.sample
     offer.save!
