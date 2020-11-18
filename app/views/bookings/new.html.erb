@@ -1,3 +1,17 @@
+<header>
+  <%= image_tag "patronize_me_logo.svg" %>
+  <nav>
+    <a href="#">Contact</a>
+    <a href="#">Dashboard</a>
+    <a href="#">Sign Out</a>
+  </nav>
+</header>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
 <div class="container">
   <% if policy(Booking).create? %>
       <h1>Make a booking request</h1>
@@ -9,5 +23,3 @@
   <% end %>
   <p><%= link_to "Back to offers", offers_path %></p>
 </div>
-
-

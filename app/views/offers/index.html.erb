@@ -1,5 +1,18 @@
+<header>
+  <%= image_tag "patronize_me_logo.svg" %>
+  <nav>
+    <a href="#">Contact</a>
+    <a href="#">Dashboard</a>
+    <a href="#">Sign Out</a>
+  </nav>
+</header>
+
+<br>
+<br>
+<br>
+<br>
+
 <div class="container">
-  <h4>NAVBAR</h4>
   <br>
   <div class="search-bar">
     <h4>Search more artists</h4>
@@ -24,7 +37,7 @@
               <li><i class="fas fa-euro-sign"> <%= offer.price %></i></li>
               <li><i class="fas fa-map-marker"> <%= offer.city %></i></li>
             </ul>
-            <div class="offer-card-button"> <%= link_to "BOOK ME", new_offer_path%>
+            <div class="offer-card-button"> <%= link_to "BOOK ME", offer_path(offer)%>
           </div>
           </div>
         </div>
@@ -37,7 +50,7 @@
               <li><i class="fas fa-euro-sign"> <%= offer.price %></i></li>
               <li><i class="fas fa-map-marker"> <%= offer.city %></i></li>
             </ul>
-            <div class="offer-card-button"> <%= link_to "BOOK ME", new_offer_path%>
+            <div class="offer-card-button"> <%= link_to "BOOK ME", offer_path(offer)%>
           </div>
           </div>
         </div>
