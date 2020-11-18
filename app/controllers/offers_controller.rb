@@ -4,6 +4,7 @@ class OffersController < ApplicationController
 
   def index
     @offers = policy_scope(Offer)
+    @offer = Offer.new
   end
 
   def show
