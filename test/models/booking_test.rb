@@ -1,7 +1,7 @@
 require 'test_helper'
 
 class BookingTest < ActiveSupport::TestCase
-  # test "the truth" do
-  #   assert true
-  # end
+  def create?
+    return true
+  end
 end
