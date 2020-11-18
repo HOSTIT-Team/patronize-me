@@ -18,10 +18,26 @@
       <i class="fa fa-arrow-left"></i> BACK
     <% end %>
   </div>
-  <h1><%= @offer.title %></h1>
-  <h2><%="#{@offer.user.first_name} #{@offer.user.last_name}"  %></h2>
+
+    <h1><%= @offer.title %></h1>
+    <h2><%="#{@offer.user.first_name} #{@offer.user.last_name}"%></h2>
+
+    <p><%= @offer.description %></p>
+
   <div class="artist-card">
   <!-- image place holder -->
-  <button> <%#= button_to "Book", { action: "booking confirmation path placeholder", class: "btn btn-primary"}, :method => :get %> </button>
+  <!-- <button> <%#= button_to "Book", { action: "booking confirmation path placeholder", class: "btn btn-primary"}, :method => :get %> </button> -->
   </div>
+<div class=booking>
+  <% if policy(Booking).create? %>
+      <h1>Make a booking request</h1>
+      <%= simple_form_for(booking = Booking.new) do |f| %>
+      <% booking.offer = @offer  %>
+      <%= f.input :day, :label => "Event date"  %>
+      <%= f.input :comment, :label => "Is there anything else the artist should know?" %>
+      <%= f.submit "Submit request", class: "btn btn-primary" %>
+    <% end %>
+  <% end %>
+  <p><%= link_to "Back to offers", offers_path %></p>
+</div>
 </section>
