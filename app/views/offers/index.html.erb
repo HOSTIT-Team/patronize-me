@@ -1,13 +1,18 @@
-<h4>NAVBAR</h4>
 <div class="container">
+<h4>NAVBAR</h4>
+
   <div class="search-bar">
-    <h2>Search bar goes here</h2>
-    <br>
+    <%= simple_form_for @offer do |f| %>
+    <%= f.input :category, :label => "Artform", collection: Offer::CATEGORY %>
+    <%= f.input :city, :label => "Location", collection: Offer::CITY %>
+    <%= f.submit "Search", class: "btn btn-primary" %>
+    <% end %>
   </div>
+
   <div class="offer-cards-container">
     <% @offers.each do |offer| %>
       <div class="offer-card">
-        <div class="offer-card-image">
+        <div class="offer-card-image" >
         <div class="offer-card-info">
           <h4><%= offer.title %></h4>
           <p><i class="fas fa-hashtag"></i> <%= offer.category %></p>
@@ -20,6 +25,7 @@
     <% end %>
   </div>
   <br>
-</div>
 <p><%= link_to "HOME", root_path %></p>
 <h4>FOOTER</h4>
+</div>
+
