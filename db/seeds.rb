@@ -7,7 +7,7 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 require "faker"
 
-100.times do 
+30.times do 
   first_name = Faker::Name.first_name
   last_name = Faker::Name.last_name
   email = Faker::Internet.safe_email(name: "#{first_name}.#{last_name}")
@@ -17,7 +17,7 @@ require "faker"
   user.bio = Faker::TvShows::HowIMetYourMother.quote
   user.save!
 
-  10.times do
+  3.times do
     offer = Offer.new(user: user)
     offer.price = rand(50..1500)
     offer.title = Faker::Hipster.sentence(word_count: rand(3))
@@ -30,14 +30,20 @@ require "faker"
 end
 
 User.all.each do |user|
-  
-  10.times do 
+  6.times do 
     offers = Offer.where.not(user_id: user.id)
-    puts offers
-    # booking = Booking.new(offer_id: offers.sample, user_id: user.id)
-    # booking.day = Faker::Date.forward(days: rand(1..30))
-    # booking.comment = Faker::Lorem.question(word_count: rand(4..12))
-    # booking.save!
+    offer = offers.sample
+    booking = Booking.new(offer: offer, user: user)
+    booking.day = Faker::Date.forward(days: rand(1..30))
+    booking.comment = Faker::Lorem.question(word_count: rand(4..12))
+    booking.save!
   end
 end
 
+bookings = Booking.all
+
+60.times do
+  booking = bookings.sample
+  review = Review.new(booking: booking, rating: rand(3..5), content: Faker::Movies::HarryPotter.quote)
+  review.save!
+end
