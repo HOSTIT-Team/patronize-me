@@ -5,6 +5,8 @@
   100% { opacity: 1; }
 }
 
+// Hero Area -------------------------------------------------------------------
+
 nav {
   float:right;
   margin-top: 50px;
@@ -23,23 +25,23 @@ a.button-dscv {
 }
 
 header {
-    background-color: rgba(255, 255, 255, 0.15);
-    overflow: hidden;
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-  }
+  background-color: rgba(255, 255, 255, 0.15);
+  overflow: hidden;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+}
 
 header a {
-    padding: 5px 5px;
-    color: #48353a;
-    text-decoration: none;
-    font-size: 20px;
-  }
+  padding: 5px 5px;
+  color: #48353a;
+  text-decoration: none;
+  font-size: 20px;
+}
 
 section.hero {
-  background-image: url("/assets/home_page banner.png");
+  background-image: image-url('home_page_banner.png');
   background-size: cover;
   background-position: center;
   padding: 250px 0 200px 0;
@@ -58,6 +60,8 @@ header img {
   margin-top: 10px;
 }
 
+// Discover --------------------------------------------------------------------
+
 section.discover {
   margin-top: 160px;
   margin-bottom: 160px;
@@ -75,11 +79,15 @@ div.slides img {
   position: absolute;
   width: 373px;
   height: 467px;
-  transition: transform 0.5s;
+  transition: transform 0.5s, box-shadow 0.5s;
 }
 
 div.slides img:first-child {
   z-index:1;
+}
+
+div.slide:hover img {
+  box-shadow: 0 0 10px rgba(0,0,0,0.2);
 }
 
 a.button {
@@ -99,9 +107,26 @@ a.button {
   width:400px;
 }
 
-.discover.content{
+div.content{
   margin-left:60px;
 }
+
+div.content img {
+  width: 485px;
+}
+
+a.button-search {
+  background-color:black;
+  font-weight: bold;
+  color:white;
+  text-decoration:none;
+  padding: 10px 25px 10px 30px;
+  border-radius:3px;
+  text-decoration: none;
+  //margin-left: 230px;
+}
+
+// About Us Area ---------------------------------------------------------------
 
 .about h1{
   padding-left: 800px;
@@ -126,7 +151,7 @@ a.button-about {
 }
 
 section.about {
-  background-image: url("/assets/banner_about_30.jpg");
+  background-image: image-url('banner_about_30.jpg');
   background-size: cover;
   background-position: center;
   padding: 250px 0 200px 0;

@@ -1,5 +1,5 @@
 <header>
-  <img src="/assets/logo.svg">
+  <%= image_tag "patronize_me_logo.svg" %>
   <nav>
     <a href="#">Sign Up</a>
     <a href="#">Sign In</a>
@@ -7,22 +7,28 @@
   </nav>
 </header>
 
+
 <section class="hero">
   <h1>Book <br> independent <br> artists.</h1> <br>
-  <a href="#" class="button-dscv">DISCOVER</a>
+  <a href="#search" class="button-dscv">DISCOVER</a>
 </section>
 
-<section class="discover">
+
+<section id= "search" class="discover">
   <div class="slides">
-    <img src="/assets/art_1.jpg">
-    <img src="/assets/art_2.jpg">
-    <img src="/assets/art_3.jpg">
-    <img src="/assets/art_4.jpg">
-    <img src="/assets/art_5.jpg">
+     <%= image_tag "art_1.jpg" %>
+     <%= image_tag "art_2.jpg" %>
+     <%= image_tag "art_3.jpg" %>
+     <%= image_tag "art_4.jpg" %>
+     <%= image_tag "art_5.jpg" %>
   </div>
   <div class="content">
     <h1>Discover new talent.</h1>
-    <h2>Empower local creative scenes.</h2>
+    <h2>Empower local creative scenes.</h2> <br>
+    <%= image_tag "dropdown.png" %> <br>
+    <br>
+    <br>
+    <a href="#" class="button-search">SEARCH</a>
   </div>
 </section>
 
@@ -35,5 +41,3 @@
 <footer>
   <br>
 </footer>
-
-<script src="<%= "assets/slides.js" %>"></script>
