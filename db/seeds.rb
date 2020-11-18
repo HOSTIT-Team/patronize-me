@@ -40,3 +40,10 @@ end
 #     # booking.save!
 #   end
 # end
+
+# https://c1.staticflickr.com/3/2889/33773377295_3614b9db80_b.jpg > san_francisco.jpg
+# curl https://pbs.twimg.com/media/DC1Xyz3XoAAv7zB.jpg > boris_retreat_2017.jpg
+# # rails c
+# Cloudinary::Uploader.upload("san_francisco.jpg")
+# Cloudinary::Uploader.upload("boris_retreat_2017.jpg")
+# rm san_francisco.jpg boris_retreat_2017.jpg
