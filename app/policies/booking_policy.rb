@@ -3,9 +3,8 @@ class BookingPolicy < ApplicationPolicy
     def resolve
       scope.where(user: user).where(status: 'pending')
     end
-
-    def index?
-      true
-    end
+  end
+  def create?
+    true
   end
 end
