@@ -5,6 +5,45 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+require "faker"
 
-#  for attaching the images to model
-# @message.image.attach(io: File.open('/path/to/file'), filename: 'file.pdf')
+30.times do 
+  first_name = Faker::Name.first_name
+  last_name = Faker::Name.last_name
+  email = Faker::Internet.safe_email(name: "#{first_name}.#{last_name}")
+  user = User.new(email: email, first_name: first_name, last_name: last_name)
+  user.password = "123456"
+  user.phone_number = Faker::PhoneNumber.cell_phone_in_e164
+  user.bio = Faker::TvShows::HowIMetYourMother.quote
+  user.save!
+
+  3.times do
+    offer = Offer.new(user: user)
+    offer.price = rand(50..1500)
+    offer.title = Faker::Hipster.sentence(word_count: rand(3))
+    offer.category = Offer::CATEGORY.sample
+    offer.city = Offer::CITY.sample
+    offer.description = Faker::Lorem.paragraph(sentence_count: 2)
+    offer.delivery_type = Offer::DELIVERY.sample
+    offer.save!
+  end
+end
+
+User.all.each do |user|
+  6.times do 
+    offers = Offer.where.not(user_id: user.id)
+    offer = offers.sample
+    booking = Booking.new(offer: offer, user: user)
+    booking.day = Faker::Date.forward(days: rand(1..30))
+    booking.comment = Faker::Lorem.question(word_count: rand(4..12))
+    booking.save!
+  end
+end
+
+bookings = Booking.all
+
+60.times do
+  booking = bookings.sample
+  review = Review.new(booking: booking, rating: rand(3..5), content: Faker::Movies::HarryPotter.quote)
+  review.save!
+end
