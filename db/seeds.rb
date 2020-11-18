@@ -47,3 +47,6 @@ end
 # Cloudinary::Uploader.upload("san_francisco.jpg")
 # Cloudinary::Uploader.upload("boris_retreat_2017.jpg")
 # rm san_francisco.jpg boris_retreat_2017.jpg
+
+#  for attaching the images to model
+# @message.image.attach(io: File.open('/path/to/file'), filename: 'file.pdf')
