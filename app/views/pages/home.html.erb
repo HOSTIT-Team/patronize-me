@@ -1,5 +1,5 @@
 <header>
-  <%= link_to(image_tag("/assets/logo.svg", :alt => "logo", :title => "Home"), "/") %>
+  <%= image_tag "patronize_me_logo.svg" %>
   <nav>
     <a href="#">Sign Up</a>
     <a href="#">Sign In</a>
@@ -8,18 +8,34 @@
 </header>
 
 <section class="hero">
-  <h1>Book independent artists.</h1>
-  <a href="#" class="button">Discover</a>
+  <h1>Book <br> independent <br> artists.</h1> <br>
+  <a href="#search" class="button-dscv">DISCOVER</a>
 </section>
 
-<section class="discover">
-  <h1>Discover new talent.</h1>
-  <h2>Empower local scenes.</h2>
+<section id= "search" class="discover">
+  <div class="slides">
+     <%= image_tag "art_1.jpg" %>
+     <%= image_tag "art_2.jpg" %>
+     <%= image_tag "art_3.jpg" %>
+     <%= image_tag "art_4.jpg" %>
+     <%= image_tag "art_5.jpg" %>
+  </div>
+  <div class="content">
+    <h1>Discover new talent.</h1>
+    <h2>Empower local creative scenes.</h2> <br>
+    <%= image_tag "dropdown.png" %> <br>
+    <br>
+    <br>
+    <a href="#" class="button-search">SEARCH</a>
+  </div>
 </section>
 
 <section class="about">
-  <h1>people need art & the artworld needs patrons</h1>
-  <h2>we are here to bring them together.</h2>
-  <a href="#" class="button-about">About Us</a>
+  <h1>People need art & <br> the artworld needs patrons.</h1>
+  <h2>We are here to bring them together.</h2> <br>
+  <a href="#" class="button-about">ABOUT US</a>
 </section>
 
+<footer>
+  <br>
+</footer>
