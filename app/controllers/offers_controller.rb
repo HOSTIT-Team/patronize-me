@@ -9,6 +9,15 @@ class OffersController < ApplicationController
 
   def show
     authorize @offer
+    @booking = Booking.new(booking_params)
+    @booking.user = current_user
+    authorize @booking
+    if @booking.save
+      redirect_to bookings_path(@booking)
+    else
+      render :new
+      flash.alert = "Booking request not created. Please check inputs."
+    end
   end
 
   def new
@@ -36,5 +45,9 @@ class OffersController < ApplicationController
 
   def offer_params
     params.require(:offer).permit(:title, :category, :price, :description, :city, :delivery_type)
+  end
+
+  def booking_params
+    params.permit(:status, :day, :comment)
   end
 end
