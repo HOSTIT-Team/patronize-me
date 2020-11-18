@@ -31,8 +31,7 @@
 <div class=booking>
   <% if policy(Booking).create? %>
       <h1>Make a booking request</h1>
-      <%= simple_form_for(booking = Booking.new) do |f| %>
-      <% booking.offer = @offer  %>
+      <%= simple_form_for([@offer, @booking]) do |f| %>
       <%= f.input :day, :label => "Event date"  %>
       <%= f.input :comment, :label => "Is there anything else the artist should know?" %>
       <%= f.submit "Submit request", class: "btn btn-primary" %>

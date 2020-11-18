@@ -14,12 +14,14 @@ class BookingsController < ApplicationController
 
   def create
     @booking = Booking.new(booking_params)
+    @offer = Offer.find(params[:offer_id])
+    @booking.offer = @offer
     @booking.user = current_user
     authorize @booking
     if @booking.save
-      redirect_to bookings_path(@booking)
+      redirect_to bookings_path
     else
-      render :new
+      render "offers/show"
       flash.alert = "Booking request not created. Please check inputs."
     end
   end
