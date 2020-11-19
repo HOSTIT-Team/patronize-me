@@ -44,8 +44,8 @@ class OffersController < ApplicationController
 
   def update
     authorize @offer
+    @offer.update(offer_params)
     if @offer.update
-      @offer.update(offer_params)
       redirect_to offer_path(@offer)
       flash.alert = "Offer successfully updated."
     else
@@ -56,9 +56,12 @@ class OffersController < ApplicationController
 
   def destroy
     authorize @offer
-    @offer.destroy
-    redirect_to offers_path
-    flash.alert = "Offer successfully deleted."
+    if @offer.destroy
+      redirect_to offers_path
+      flash.alert = "Offer successfully deleted."
+    else
+      flash.alert = "Offer not deleted"
+    end
   end
 
   private
