@@ -6,7 +6,7 @@ Rails.application.routes.draw do
   get "contact", to: "pages#contact"
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
   resources :offers do
-    resources :bookings, only: [:new, :create]
+    resources :bookings, only: [:new, :create, :destroy]
   end
 
   resources :bookings, only: [:index]

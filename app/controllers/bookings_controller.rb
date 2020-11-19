@@ -2,10 +2,16 @@ class BookingsController < ApplicationController
   before_action :find_booking, only: [:show]
   skip_before_action :authenticate_user!, only: :index
 
-   def index
+ def index
      @bookings_requests = policy_scope(Booking)
-    # @bookings_as_artist = Booking.where(offer.user == current_user)
-  end
+   @artist = current_user.offers.any?
+    @bookings = current_user.bookings
+    if @artist
+      @my_offers = current_user.offers
+      @bookings_as_artist = Booking.where(offer_id: @my_offers.pluck(:id))
+    end
+
+end
 
   def new
     @booking = Booking.new
