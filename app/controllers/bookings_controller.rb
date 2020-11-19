@@ -44,6 +44,6 @@ end
   end
 
   def booking_params
-    params.require(:booking).permit(:status, :day, :comment)
+    params.require(:booking).permit(:status, :day, :comment, :patron_address)
   end
 end

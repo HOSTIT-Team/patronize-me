@@ -22,8 +22,9 @@
       <h1>Make a booking request</h1>
       <%= simple_form_for([@offer, @booking]) do |f| %>
       <%= f.input :day, :label => "Event date"  %>
+      <%= f.input :patron_address, :label => "Where should the artist perform?"  %>
       <%= f.input :comment, :label => "Is there anything else the artist should know?" %>
-      <%= f.submit "Submit request", class: "btn btn-primary" %>
+      <%= f.submit "Submit request", class: "btn devise-button" %>
     <% end %>
   <% end %>
   <p><%= link_to "Back to offers", offers_path %></p>
