@@ -1,1 +1,26 @@
 @import "show";
+@import "offer";
+
+section.hero-offer {
+  background-image: image-url('background_offer_index.png');
+  width: auto;
+}
+
+div.container {
+  padding-top: 30px;
+  padding-bottom: 30px;
+}
+
+section.main {
+  align-items: center;
+  margin-left: 9%;
+}
+
+#offerpage-title {
+  color: white;
+  text-align: right;
+}
+
+.search-bar {
+  color:white;
+}

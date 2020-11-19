@@ -1,13 +1,26 @@
+<section class="hero-offer">
  <div class="container">
-  <div class="search-bar">
-    <h4>Search more artists</h4>
-    <%= simple_form_for @offer do |f| %>
-    <%= f.input :category, :label => "Artform", collection: Offer::CATEGORY %>
-    <%= f.input :city, :label => "Location", collection: Offer::CITY %>
-    <%= f.submit "Search", class: "btn devise-button" %>
-    <% end %>
+    <div class="search-bar">
+      <h2 id=offerpage-title> Get Inspired!</h2>
+      <%= simple_form_for @offer do |f| %>
+      <%= f.input :category, :label => "Artform", collection: Offer::CATEGORY %>
+      <%= f.input :city, :label => "Location", collection: Offer::CITY %>
+      <%= f.submit "Search", class: "btn devise-button" %>
+      <% end %>
   </div>
+</section>
 
+      <%= form_tag offers_path, method: :get do %>
+        <%= text_field_tag :query,
+          params[:query],
+          class: "form-control",
+          placeholder: "Find an offer"
+        %>
+        <%= submit_tag "Search", class: "btn btn-primary" %>
+      <% end %>
+
+
+<section class="main">
   <div class="offer-cards-container">
   <% @offers.each do |offer| %>
     <div class="offer-card">
@@ -30,4 +43,4 @@
   <% end %>
 </div>
 </div>
-
+</section>
