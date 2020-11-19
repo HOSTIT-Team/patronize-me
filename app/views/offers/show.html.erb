@@ -1,28 +1,14 @@
-<header>
-  <%= image_tag "patronize_me_logo.svg" %>
-  <nav>
-    <a href="#">Contact</a>
-    <a href="#">Dashboard</a>
-    <a href="#">Sign Out</a>
-  </nav>
-</header>
 
-<br>
+<section>
 
-<section class=main>
-  <br>
-  <br>
-  <br>
-  <div class="back">
-    <%= link_to root_path do %>
-      <i class="fa fa-arrow-left"></i> BACK
-    <% end %>
-  </div>
+<div class="container">
+  <%= link_to root_path, class: "back" do %>
+    <i class="fa fa-arrow-left"></i> BACK
+  <% end %>
+  <h1><%= @offer.title %></h1>
+  <h2><%="#{@offer.user.first_name} #{@offer.user.last_name}"%></h2>
 
-    <h1><%= @offer.title %></h1>
-    <h2><%="#{@offer.user.first_name} #{@offer.user.last_name}"%></h2>
-
-    <p><%= @offer.description %></p>
+  <p><%= @offer.description %></p>
 
   <div class="artist-card">
   <!-- image place holder -->
@@ -31,13 +17,14 @@
 <div class=booking>
   <% if policy(Booking).create? %>
       <h1>Make a booking request</h1>
-      <%= simple_form_for @booking do |f| %>
-      <% booking.offer = @offer  %>
+      <%= simple_form_for([@offer, @booking]) do |f| %>
       <%= f.input :day, :label => "Event date"  %>
       <%= f.input :comment, :label => "Is there anything else the artist should know?" %>
       <%= f.submit "Submit request", class: "btn btn-primary" %>
     <% end %>
   <% end %>
   <p><%= link_to "Back to offers", offers_path %></p>
+  </div>
 </div>
+
 </section>

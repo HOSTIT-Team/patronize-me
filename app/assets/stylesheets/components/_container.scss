@@ -1,7 +1,6 @@
 .offer-cards-container {
-  display: flex;
-  justify-content: start;
-  flex-wrap: wrap;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  margin-top: 40px;
+  grid-row-gap: 20px;
 }
-
-
