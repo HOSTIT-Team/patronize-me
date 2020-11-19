@@ -10,9 +10,10 @@
             <p><i class="fas fa-hashtag"></i> <%= booking.offer.category %></p>
             <p><i class="fas fa-euro-sign"> <%= booking.offer.price %></i></p>
             <p><i class="fas fa-map-marker"> <%= booking.day %></i></p>
+            <p><i class="fas fa-info"> <%= booking.comment %></i></p>
             <% if booking.status == "pending" %>
               <i class="fas fa-calendar-minus", style="color: orange"> <%= booking.status %></i>
-            <% elsif booking.status == "approved" %>
+            <% elsif booking.status == "Accepted" %>
              <i class="fas fa-calendar-check" , style="color: green"> <%= booking.status %></i>
             <% else %>
               <i class="fas fa-calendar-times" , style="color: red"> <%= booking.status %></i>
@@ -37,9 +38,10 @@
             <p><i class="fas fa-hashtag"></i> <%= booking.offer.category %></p>
             <p><i class="fas fa-euro-sign"> <%= booking.offer.price %></i></p>
             <p><i class="fas fa-map-marker"> <%= booking.day %></i></p>
+            <p><i class="fas fa-info"> <%= booking.comment %></i></p>
             <% if booking.status == "pending" %>
               <i class="fas fa-calendar-minus", style="color: orange"> <%= booking.status %></i>
-            <% elsif booking.status == "approved" %>
+            <% elsif booking.status == "Accepted" %>
              <i class="fas fa-calendar-check" , style="color: green"> <%= booking.status %></i>
             <% else %>
               <i class="fas fa-calendar-times" , style="color: red"> <%= booking.status %></i>
