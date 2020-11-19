@@ -1,5 +1,5 @@
 class OffersController < ApplicationController
-  before_action :find_offer, only: [:show, :edit, :destroy]
+  before_action :find_offer, only: [:show, :edit, :update, :destroy]
   skip_before_action :authenticate_user!, only: :index
 
   def index
@@ -43,11 +43,15 @@ class OffersController < ApplicationController
   end
 
   def update
-    @offer = Offer.find(params[:id])
     authorize @offer
-    @offer.update(offer_params)
-    redirect_to offer_path(@offer)
-    flash.alert = "Offer successfully updated."
+    if @offer.update
+      @offer.update(offer_params)
+      redirect_to offer_path(@offer)
+      flash.alert = "Offer successfully updated."
+    else
+      render :edit
+      flash.alert = "Offer not updated. Please check inputs."
+    end
   end
 
   def destroy
