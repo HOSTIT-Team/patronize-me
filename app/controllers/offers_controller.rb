@@ -5,6 +5,18 @@ class OffersController < ApplicationController
   def index
     @offers = policy_scope(Offer)
     @offer = Offer.new
+
+    if params[:category].present?
+      @offers = Offer.where(category: params[:category])
+    else
+      @offers = Offer.all
+    end
+
+    if params[:location].present?
+      @offers = Offer.where(city: params[:location])
+    else
+      @offers
+    end
   end
 
   def show
