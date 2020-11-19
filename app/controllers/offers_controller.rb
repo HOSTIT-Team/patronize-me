@@ -31,7 +31,7 @@ class OffersController < ApplicationController
     authorize @offer
     if @offer.save
       redirect_to offer_path(@offer)
-      flash.alert = "Offer successfull created."
+      flash.alert = "Offer successfully created."
     else
       render :new
       flash.alert = "Offer not created. Please check inputs."
