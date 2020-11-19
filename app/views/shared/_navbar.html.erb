@@ -4,15 +4,24 @@
   <% end %>
     <nav>
       <div class="dropdown">
-      <div class="nav-avatar"></div>
+        <% if user_signed_in? && current_user.avatar.attached?%>
+          <div class="nav-avatar" style="background: url('<%= cl_image_path current_user.avatar.key, crop: :fill %>')">
+        <% else %>
+          <div class="nav-avatar" style="background-image: url(<%= image_url('placholder-avatar.png') %>); 
+    border: solid 0.3px;">
+          </div>
+        <% end %>
       <div class="dropdown-content">
-      <% if user_signed_in? %>
-        <%= link_to "Log Out", destroy_user_session_path, method: "delete" %>
-        <%= link_to "Dashboard" %>
-      <% else %>
-        <%= link_to "Log In", new_user_session_path %>
-        <%= link_to "Register", new_user_registration_path %>
-      <% end %>
+        <% if user_signed_in? %>
+          <%= link_to "Profile" %>
+          <%= link_to "Bookings", bookings_path %>
+          <%= link_to "Offers"  %> <!-- needs to go to the users created offers -->
+          <%= link_to "Add Offer", new_offer_path %> <!-- added this here until there is a place it can be used properly -->
+          <%= link_to "Log Out", destroy_user_session_path, method: "delete" %>
+        <% else %>
+          <%= link_to "Log In", new_user_session_path %>
+          <%= link_to "Register", new_user_registration_path %>
+        <% end %>
       </div>
     </div>
     </nav>
