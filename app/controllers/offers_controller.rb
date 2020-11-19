@@ -1,5 +1,5 @@
 class OffersController < ApplicationController
-  before_action :find_offer, only: [:show]
+  before_action :find_offer, only: [:show, :edit]
   skip_before_action :authenticate_user!, only: :index
 
   def index
@@ -9,7 +9,6 @@ class OffersController < ApplicationController
 
   def show
     authorize @offer
-<<<<<<< HEAD
     @booking = Booking.new(booking_params)
     @booking.user = current_user
     authorize @booking
@@ -19,9 +18,6 @@ class OffersController < ApplicationController
       render :new
       flash.alert = "Booking request not created. Please check inputs."
     end
-=======
-    @booking = Booking.new
->>>>>>> 926c3b83ec9fa318519cb28499f71750636054d1
   end
 
   def new
@@ -39,6 +35,15 @@ class OffersController < ApplicationController
       render :new
       flash.alert = "Offer not created. Please check inputs."
     end
+  end
+
+  def edit
+    authorize @offer
+  end
+
+  def update
+    authorize @offer
+    @offer.update(params[:offer])
   end
 
   private
