@@ -1,10 +1,16 @@
 class BookingsController < ApplicationController
-  before_action :find_booking, only: [:show]
+  before_action :find_booking, only: [:show, :destroy]
   skip_before_action :authenticate_user!, only: :index
 
-   def index
+ def index
     @bookings_requests = policy_scope(Booking.where(user: current_user))
-  end
+   @artist = current_user.offers.any?
+    @bookings = current_user.bookings
+    if @artist
+      @my_offers = current_user.offers
+      @bookings_as_artist = Booking.where(offer_id: @my_offers.pluck(:id))
+    end
+end
 
   def new
     @booking = Booking.new
@@ -23,6 +29,12 @@ class BookingsController < ApplicationController
       render "offers/show"
       flash.alert = "Booking request not created. Please check inputs."
     end
+  end
+
+  def destroy
+    authorize @booking
+    @booking.destroy
+    redirect_to bookings_path
   end
 
   private
