@@ -1,30 +1,32 @@
-<div class="container">
-  <div class="search-bar">
-    <h4>Search more artists</h4>
-    <%= simple_form_for @offer do |f| %>
-    <%= f.input :category, :label => "Artform", collection: Offer::CATEGORY %>
-    <%= f.input :city, :label => "Location", collection: Offer::CITY %>
-    <%= f.submit "Search", class: "btn devise-button" %>
+<div class="offer-cards-container">
+    <% @offers.each do |offer| %>
+      <div class="offer-card">
+      <% if offer.banner.attached? %>
+        <div class="offer-card-image" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('<%= cl_image_path offer.banner.key, height: 300, width: 400, crop: :fill %>')">
+          <div class="offer-card-info">
+            <p><strong><%= offer.title.upcase %></strong></p>
+            <ul>
+              <p><li><i class="fas fa-hashtag"></i> <%= offer.category %></li></p>
+              <p><li><i class="fas fa-map-marker"></i> <%= offer.city %></li></p>
+              <p><li><i class="fas fa-euro-sign"></i> <%= offer.price %></li></p>
+            </ul>
+            <div class="offer-card-button"> <%= link_to "BOOK ME", offer_path(offer)%>
+          </div>
+          </div>
+        </div>
+      <% else %>
+        <div class="offer-card-image" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(https://images.unsplash.com/photo-1583376097610-516c37bb66ba?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=668&q=80)">
+          <div class="offer-card-info">
+            <p><strong><%= offer.title.upcase %></strong></p>
+            <ul>
+              <p><li><i class="fas fa-hashtag"></i> <%= offer.category %></li></p>
+              <p><li><i class="fas fa-map-marker"></i> <%= offer.city %></li></p>
+              <p><li><i class="fas fa-euro-sign"></i> <%= offer.price %></li></p>
+            </ul>
+            <div class="offer-card-button"> <strong><%= link_to "BOOK ME", offer_path(offer)%></strong></div>
+          </div>
+        </div>
+      <% end %>
+      </div>
     <% end %>
   </div>
-
-  <div class="offer-cards-container">
-  <% @offers.each do |offer| %>
-    <div class="offer-card">
-      <% raise %>
-      <div class="offer-card-image">
-        <div class="offer-card-info">
-          <p><%= offer.title %></p>
-          <ul>
-            <li><i class="fas fa-hashtag"></i> <%= offer.category %></li>
-            <li><i class="fas fa-euro-sign"> <%= offer.price %></i></li>
-            <li><i class="fas fa-map-marker"> <%= offer.city %></i></li>
-          </ul>
-          <%= link_to "BOOK ME", offer_path(offer), class: "btn offer-card-button"%>
-        </div>
-      </div>
-    </div>
-  <% end %>
-</div>
-</div>
-
