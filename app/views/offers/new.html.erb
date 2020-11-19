@@ -1,11 +1,10 @@
+<div class='container'>
 <div class="back">
   <%= link_to root_path do %>
 
     <i class="fa fa-arrow-left"></i> BACK
   <% end %>
 </div>
-
-<div class='container'>
 
   <h1>New offer</h1>
   <%= simple_form_for @offer do |f| %>
@@ -17,7 +16,7 @@
   <%= f.input :delivery_type, collection: Offer::DELIVERY %>  <!-- 2 defined options-->
   <%= f.input :banner, as: :file, label: "Add a picture to your offer." %>
 
-  <%= f.submit "Add", class: "btn btn-primary" %>
+  <%= f.submit "Add", class: "btn devise-button" %>
   <% end %>
 
 </div>
