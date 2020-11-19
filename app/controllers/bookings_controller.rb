@@ -3,7 +3,7 @@ class BookingsController < ApplicationController
   skip_before_action :authenticate_user!, only: :index
 
  def index
-     @bookings_requests = policy_scope(Booking)
+    @bookings_requests = policy_scope(Booking.where(user: current_user))
    @artist = current_user.offers.any?
     @bookings = current_user.bookings
     if @artist
@@ -12,6 +12,8 @@ class BookingsController < ApplicationController
     end
 
 end
+
+
 
   def new
     @booking = Booking.new

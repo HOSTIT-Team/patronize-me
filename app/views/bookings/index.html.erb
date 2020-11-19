@@ -1,5 +1,5 @@
-<h4>NAVBAR</h4>
 <%= current_user.email %>
+
 <div class="container">
   <div class="search-bar">
     </div>
@@ -22,6 +22,7 @@
 </div>
 
 
+
   <div class="bookings-requests-cards-container">
            <h2>  Bookings requested by patrons </h2>
     <% @bookings_as_artist.each do |booking| %>
@@ -33,13 +34,12 @@
           <p><i class="fas fa-euro-sign"> <%= booking.offer.price %></i></p>
           <p><i class="fas fa-map-marker"> <%= booking.day %></i></p>
           <p><i class="fas fa-map-marker"> <%= booking.status %></i></p>
-          <%= link_to "Refuse booking",  offer_booking_path(@booking), method: :delete, data: { confirm: "Do you really want to refuse this booking?" }, class: 'btn btn-danger ml-8' %>
+
         </div>
       </div>
       </div>
     <% end %>
   </div>
 
-<p><%= link_to "HOME", root_path %></p>
-<h4>FOOTER</h4>
+
 
