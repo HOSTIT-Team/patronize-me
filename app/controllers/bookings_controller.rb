@@ -2,8 +2,8 @@ class BookingsController < ApplicationController
   before_action :find_booking, only: [:show]
   skip_before_action :authenticate_user!, only: :index
 
-   def index
-     @bookings_requests = policy_scope(Booking)
+  def index
+    @bookings_requests = policy_scope(Booking)
     # @bookings_as_artist = Booking.where(offer.user == current_user)
   end
 

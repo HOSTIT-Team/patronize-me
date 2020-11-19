@@ -1,5 +1,5 @@
 class OffersController < ApplicationController
-  before_action :find_offer, only: [:show, :edit]
+  before_action :find_offer, only: [:show, :edit, :destroy]
   skip_before_action :authenticate_user!, only: :index
 
   def index
@@ -15,7 +15,7 @@ class OffersController < ApplicationController
     if @booking.save
       redirect_to bookings_path(@booking)
     else
-      render :new
+      render :show
       flash.alert = "Booking request not created. Please check inputs."
     end
   end
@@ -31,6 +31,7 @@ class OffersController < ApplicationController
     authorize @offer
     if @offer.save
       redirect_to offer_path(@offer)
+      flash.alert = "Offer successfull created."
     else
       render :new
       flash.alert = "Offer not created. Please check inputs."
@@ -42,8 +43,18 @@ class OffersController < ApplicationController
   end
 
   def update
+    @offer = Offer.find(params[:id])
     authorize @offer
-    @offer.update(params[:offer])
+    @offer.update(offer_params)
+    redirect_to offer_path(@offer)
+    flash.alert = "Offer successfully updated."
+  end
+
+  def destroy
+    authorize @offer
+    @offer.destroy
+    redirect_to offers_path
+    flash.alert = "Offer successfully deleted."
   end
 
   private

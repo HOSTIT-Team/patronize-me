@@ -5,6 +5,9 @@
   <%= link_to root_path, class: "back" do %>
     <i class="fa fa-arrow-left"></i> BACK
   <% end %>
+  <p><%= link_to "Edit details", edit_offer_path, class: "btn devise-button" %></p>
+  <%= link_to "Delete offer", offer_path(@offer), class: "btn devise-button", method: :delete, data: { confirm: "Are you sure you want to delete?" } %>
+
   <h1><%= @offer.title %></h1>
   <h2><%="#{@offer.user.first_name} #{@offer.user.last_name}"%></h2>
 
