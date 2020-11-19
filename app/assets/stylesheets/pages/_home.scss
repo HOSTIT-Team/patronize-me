@@ -133,3 +133,30 @@ section.about {
   background-position: center;
   padding: 250px 0 200px 0;
 }
+
+// Join us
+
+section.inspire {
+  margin-top: 10px;
+  padding-top: 50px;
+  padding-bottom: 50px;
+  background-color: #E03950;
+  text-align: center;
+  color: black;
+}
+
+.inspire h3{
+  font-weight: lighter;
+  padding-bottom: 30px;
+  font-size: 1.5rem;
+}
+
+a.button-join {
+  background-color:black;
+  font-weight: bold;
+  color:white;
+  text-decoration:none;
+  padding: 10px 15px 10px 15px;
+  border-radius:3px;
+}
+
