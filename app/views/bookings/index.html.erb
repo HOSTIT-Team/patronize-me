@@ -34,6 +34,8 @@
           <p><i class="fas fa-euro-sign"> <%= booking.offer.price %></i></p>
           <p><i class="fas fa-map-marker"> <%= booking.day %></i></p>
           <p><i class="fas fa-map-marker"> <%= booking.status %></i></p>
+ <%= link_to "Decline booking", booking_path(booking), method: :delete, data: { confirm: "Do you want to decline this booking?" }, class: 'btn btn-danger ml-8' %>
+
 
         </div>
       </div>
