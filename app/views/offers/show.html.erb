@@ -1,28 +1,14 @@
-<header>
-  <%= image_tag "patronize_me_logo.svg" %>
-  <nav>
-    <a href="#">Contact</a>
-    <a href="#">Dashboard</a>
-    <a href="#">Sign Out</a>
-  </nav>
-</header>
 
-<br>
+<section>
+  
+<div class="container">
+  <%= link_to root_path, class: "back" do %>
+    <i class="fa fa-arrow-left"></i> BACK
+  <% end %>
+  <h1><%= @offer.title %></h1>
+  <h2><%="#{@offer.user.first_name} #{@offer.user.last_name}"%></h2>
 
-<section class=main>
-  <br>
-  <br>
-  <br>
-  <div class="back">
-    <%= link_to root_path do %>
-      <i class="fa fa-arrow-left"></i> BACK
-    <% end %>
-  </div>
-
-    <h1><%= @offer.title %></h1>
-    <h2><%="#{@offer.user.first_name} #{@offer.user.last_name}"%></h2>
-
-    <p><%= @offer.description %></p>
+  <p><%= @offer.description %></p>
 
   <div class="artist-card">
   <!-- image place holder -->
@@ -38,5 +24,7 @@
     <% end %>
   <% end %>
   <p><%= link_to "Back to offers", offers_path %></p>
+  </div>
 </div>
+
 </section>
