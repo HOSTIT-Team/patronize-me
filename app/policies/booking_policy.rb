@@ -11,4 +11,7 @@ class BookingPolicy < ApplicationPolicy
   def show?
     true
   end
+  def destroy?
+  record.offer.user == user
+   end
 end
