@@ -16,7 +16,7 @@ class OffersController < ApplicationController
       redirect_to bookings_path(@booking)
     else
       render :show
-      flash.alert = "Booking request not created. Please check inputs."
+      # flash.alert = "Booking request not created. Please check inputs."
     end
   end
 
