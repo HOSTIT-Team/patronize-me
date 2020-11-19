@@ -1,27 +1,40 @@
-header {
+.navbar {
   background-color: rgba(255, 255, 255, 0.15);
-  overflow: hidden;
   position: fixed;
   top: 0;
   left: 0;
   width: 100%;
 
-  a {
-    padding: 5px 5px;
-    color: #48353a;
-    text-decoration: none;
-    font-size: 20px;
-    &:hover {
-      color: $red;
-      text-decoration: none;
-    }
-  }
+  // a {
+  //   padding: 5px 5px;
+  //   color: #48353a;
+  //   text-decoration: none;
+  //   font-size: 20px;
+  //   &:hover {
+  //     color: $red;
+  //     text-decoration: none;
+  //   }
+  // }
 
+  img {
+    margin-top: 10px;
+    margin-left: 60px;
+  }
 }
 
 nav {
-  float:right;
-  margin-top: 50px;
-  margin-right: 60px;
   align-items: center;
+}
+
+.dropdown {
+  display: flex;
+  flex-direction: column;
+}
+
+/* Dropdown button */
+.dropdown .nav-avatar {
+  background-color: $red;
+  border-radius: 50%;
+  width: 60px;
+  height: 60px;
 }
