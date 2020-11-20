@@ -9,6 +9,12 @@ class BookingsController < ApplicationController
     if @artist
       @my_offers = current_user.offers
       @bookings_as_artist = Booking.where(offer_id: @my_offers.pluck(:id))
+      @markers = @bookings_as_artist.geocoded.map do |booking|
+        {
+          lat: booking.latitude,
+          lng: booking.longitude
+        }
+      end
     end
   end
 

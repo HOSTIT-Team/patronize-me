@@ -5,21 +5,22 @@
     <% @bookings_requests.each do |booking| %>
       <div class="booking-card">
         <div class="booking-card-image">
-        <div class="booking-card-info">
-          <h4><%= booking.offer.title %></h4>
-          <p><i class="fas fa-hashtag"></i> <%= booking.offer.category %></p>
-          <p><i class="fas fa-euro-sign"> <%= booking.offer.price %></i></p>
-          <p><i class="far fa-calendar-alt"></i> <%= booking.day %></i></p>
-          <p><i class="fas fa-map-marker-alt"></i> <%= booking.patron_address %></i></p>
-          <p><i class="far fa-comment-alt"></i> <%= booking.comment %></i></p>
-          <% if booking.status == "pending" %>
-            <i class="fas fa-calendar-minus", style="color: orange"> <%= booking.status %></i>
-          <% elsif booking.status == "Accepted" %>
-           <i class="fas fa-calendar-check" , style="color: green"> <%= booking.status %></i>
-          <% else %>
-            <i class="fas fa-calendar-times" , style="color: red"> <%= booking.status %></i>
-          <% end %>
-          <%= link_to "Edit booking request", edit_booking_path(booking), class: 'btn devise-button' %>
+          <div class="booking-card-info">
+            <h4><%= booking.offer.title %></h4>
+            <p><i class="fas fa-hashtag"></i> <%= booking.offer.category %></p>
+            <p><i class="fas fa-euro-sign"> <%= booking.offer.price %></i></p>
+            <p><i class="far fa-calendar-alt"></i> <%= booking.day %></i></p>
+            <p><i class="fas fa-map-marker-alt"></i> <%= booking.patron_address %></i></p>
+            <p><i class="far fa-comment-alt"></i> <%= booking.comment %></i></p>
+            <% if booking.status == "pending" %>
+              <i class="fas fa-calendar-minus", style="color: orange"> <%= booking.status %></i>
+            <% elsif booking.status == "Accepted" %>
+            <i class="fas fa-calendar-check" , style="color: green"> <%= booking.status %></i>
+            <% else %>
+              <i class="fas fa-calendar-times" , style="color: red"> <%= booking.status %></i>
+            <% end %>
+            <%= link_to "Edit booking request", edit_booking_path(booking), class: 'btn devise-button' %>
+          </div>
         </div>
       </div>
     <% end %>
@@ -29,14 +30,11 @@
 <div class="container">
   <div class="bookings-requests-cards-container">
     <h2><strong>Bookings requested by patrons</strong></h2>
-    <div id="map"
-            style="width: 100%; height: 200px;"
-            data-markers="<%= {
-              lat: booking.latitude,
-              lng: booking.longitude
-            }.to_json %>"
-            data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>">
-          </div>
+   <div id="map"
+     style="width: 100%; height: 600px;"
+     data-markers="<%= @markers.to_json %>"
+     data-mapbox-api-key="<%= ENV["MAPBOX_API_KEY"] %>">
+    </div>
     <% @bookings_as_artist.each do |booking| %>
       <div class="booking-card">
         <div class="booking-card-image">

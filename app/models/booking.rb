@@ -6,4 +6,8 @@ class Booking < ApplicationRecord
 
   geocoded_by :patron_address
   after_validation :geocode, if: :will_save_change_to_patron_address?
+
+  def will_save_change_to_patron_address?
+    patron_address_changed?
+  end
 end
