@@ -31,14 +31,12 @@ class BookingsController < ApplicationController
     end
   end
 
-# -------------
   def edit
     authorize @booking
   end
 
   def update
     authorize @booking
-    @booking.update(booking_params)
     if @booking.update(booking_params)
       redirect_to bookings_path(@offer)
       flash.alert = "Request to change booking successfully submitted."
@@ -47,7 +45,6 @@ class BookingsController < ApplicationController
       flash.alert = "Request to change booking not submitted. Please check inputs."
     end
   end
-# -------------
 
   def destroy
     authorize @booking
