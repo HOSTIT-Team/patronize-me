@@ -1,8 +1,9 @@
 #offer-pic {
   display: flex;
-  margin-bottom: 200px;
-  margin-left: 80px;
-  height: 100%s;
+  padding-left: 175px;
+  img {
+    height: 80vh;
+  }
 }
 
 #info-booking {
@@ -24,6 +25,10 @@
   margin-top: 25px;
   font-size: 24px;
   font-weight: lighter;
+}
+
+div.container-offer{
+  padding-left: 40px;
 }
 
 p {
