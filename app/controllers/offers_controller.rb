@@ -3,19 +3,14 @@ class OffersController < ApplicationController
   skip_before_action :authenticate_user!, only: :index
 
   def index
-    @offers = policy_scope(Offer)
-    @offer = Offer.new
-
-    if params[:category].present?
-      @offers = Offer.where(category: params[:category])
+    if params[:category].present? && !params[:location].present?
+      @offers = policy_scope(Offer.where(category: params[:category]))
+    elsif !params[:category].present? && params[:location].present?
+      @offers = policy_scope(Offer.where(city: params[:location]))
+    elsif params[:category].present? && params[:location].present?
+      @offers = policy_scope(Offer.where(city: params[:location]).where(category: params[:category]))
     else
-      @offers = Offer.all
-    end
-
-    if params[:location].present?
-      @offers = Offer.where(city: params[:location])
-    else
-      @offers
+      @offers = policy_scope(Offer.all)
     end
   end
 
