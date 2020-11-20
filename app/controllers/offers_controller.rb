@@ -22,12 +22,10 @@ class OffersController < ApplicationController
     authorize @offer
     @booking = Booking.new(booking_params)
     @booking.user = current_user
-    authorize @booking
     if @booking.save
       redirect_to bookings_path(@booking)
     else
       render :show
-      # flash.alert = "Booking request not created. Please check inputs."
     end
   end
 
