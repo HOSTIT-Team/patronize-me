@@ -95,6 +95,11 @@ a.button-search {
   border-radius:3px;
   text-decoration: none;
   //margin-left: 230px;
+   &:hover {
+    text-decoration: none;
+    background-color:#08018B;
+    color: white;
+  }
 }
 
 // About Us Area ---------------------------------------------------------------
