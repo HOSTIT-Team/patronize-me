@@ -1,19 +1,11 @@
  <div class="container">
   <div class="search-bar">
     <h4>Search more artists</h4>
-    <%= form_tag offers_path, method: :get do %>
-    <%= text_field_tag :category,
-    params[:category],
-    class: "form-control",
-    placeholder: "Search by category"
-  %>
-<%= text_field_tag :location,
-    params[:location],
-    class: "form-control",
-    placeholder: "Search by location"
-  %>
-  <%= submit_tag "Search", class: "btn btn-primary" %>
-<% end %>
+    <%= simple_form_for Offer.new, method: :get do |f| %>
+    <%= f.select :category, Offer::CATEGORY, include_blank: true %>
+    <%= f.select :city, Offer::CITY, include_blank: true %>
+    <%= f.submit "Search"%>
+    <% end %>
   </div>
 
   <div class="offer-cards-container">
