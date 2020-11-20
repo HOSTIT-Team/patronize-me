@@ -1,34 +1,40 @@
+<section id=offer-pic>
+  <% if @offer.banner.attached? %>
+    <%= cl_image_tag @offer.banner.key %>
+  <% else %>
+    NO IMAGE HERE
+  <% end %>
+</section>
 
-<section>
-
+<section id=info-booking>
 <div class="container">
   <%= link_to offers_path, class: "back" do %>
     <i class="fa fa-arrow-left"></i> BACK
   <% end %>
   <% if @offer.user == current_user %>
-    <p><%= link_to "Edit details", edit_offer_path, class: "btn devise-button" %></p>
+    <p><%= link_to "Edit details", edit_offer_path %></p>
     <% if @offer.bookings.all? { |booking| booking.status == "Accepted" || booking.status == "rejected" } %>
-      <%= link_to "Delete offer", offer_path(@offer), class: "btn devise-button", method: :delete, data: { confirm: "Are you sure you want to delete?" } %>
+      <%= link_to "Delete offer", offer_path(@offer), method: :delete, data: { confirm: "Are you sure you want to delete?" } %>
     <% end %>
   <% end %>
+
   <h1><%= @offer.title %></h1>
   <h2><%="#{@offer.user.first_name} #{@offer.user.last_name}"%></h2>
-
   <p><%= @offer.description %></p>
 
-  <div class="artist-card">
-  <!-- image place holder -->
-  <!-- <button> <%#= button_to "Book", { action: "booking confirmation path placeholder", class: "btn btn-primary"}, :method => :get %> </button> -->
-  </div>
+  <h6 id=edit>
+    <%= link_to "Edit details", edit_offer_path %> or <%= link_to "Delete offer", offer_path(@offer), method: :delete, data: { confirm: "Are you sure you want to delete?" }%>
+  </h6>
+
 <% if @offer.user != current_user %>
   <div class=booking>
-    <% if policy(Booking).create? %>
+    <% if policy(@booking).create? %>
         <h1>Make a booking request</h1>
         <%= simple_form_for([@offer, @booking]) do |f| %>
         <%= f.input :day, :label => "Event date"  %>
         <%= f.input :patron_address, :label => "Where should the artist perform?"  %>
         <%= f.input :comment, :label => "Is there anything else the artist should know?" %>
-        <%= f.submit "Submit request", class: "btn devise-button" %>
+        <%= f.submit "SUBMIT", class: "button-submit" %>
       <% end %>
     <% end %>
     <p><%= link_to "Back to offers", offers_path %></p>
