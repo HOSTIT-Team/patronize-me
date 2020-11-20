@@ -1,5 +1,3 @@
-
-
 <section class="hero">
   <h1>Book <br> independent <br> artists.</h1> <br>
   <a href="#search" class="button-dscv">DISCOVER</a>
@@ -16,12 +14,11 @@
   <div class="content">
     <h1>Discover new talent.</h1>
     <h2>Empower local creative scenes.</h2> <br>
-    <%= image_tag "dropdown.png" %> <br>
+
+    <%= link_to "EXPLORE", offers_path, class: "button-search" %>
+  </div>
     <br>
     <br>
-    <%= link_to "SEARCH", offers_path, class: "button-search" %>
-
-
   </div>
 </section>
 
@@ -31,6 +28,8 @@
   <a href="#" class="button-about">ABOUT US</a>
 </section>
 
-<footer>
-  <br>
-</footer>
+<section class="inspire">
+  <h2>Are you an artist and you want to inspire people?</h2>
+  <h3> Create a profile and showcase your work </h3>
+  <%= link_to "JOIN US!", new_user_registration_path, class: "button-join" %>
+</section>

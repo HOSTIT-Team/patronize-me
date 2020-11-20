@@ -1,3 +1,77 @@
+#offer-pic {
+  display: flex;
+  margin-top: 150px;
+  margin-bottom: 200px;
+  margin-left: 80px;
+}
+
+#info-booking {
+  display: flex;
+  margin-left: 30px;
+  margin-right: 80px;
+}
+
 .booking {
   margin-right:85px;
 }
+
+#offer-title{
+  padding-top: 25px;
+  font-size: 35px;
+}
+
+#booking-request {
+  margin-top: 25px;
+  font-size: 24px;
+  font-weight: lighter;
+}
+
+p {
+  font-size: 18px;
+}
+
+.button-submit {
+  background: #7411FF;
+  width: 150px;
+  border-radius: 3px 0 0 3px;
+  font-size: 20px;
+  color: white;
+  &:hover {
+    text-decoration: none;
+    color: black;
+  }
+}
+
+a{
+  color: #7411FF;
+  text-decoration: none;
+  font-size: 15px;
+}
+
+.back {
+  text-decoration:none;
+  color: #7411FF;
+}
+
+div.search-bar {
+  align-items: 60px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
