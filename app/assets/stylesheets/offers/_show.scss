@@ -1,8 +1,8 @@
 #offer-pic {
   display: flex;
-  margin-top: 150px;
   margin-bottom: 200px;
   margin-left: 80px;
+  height: 100%s;
 }
 
 #info-booking {
@@ -31,6 +31,7 @@ p {
 }
 
 .button-submit {
+  border:none;
   background: #7411FF;
   width: 150px;
   border-radius: 3px 0 0 3px;
