@@ -9,7 +9,6 @@
   </div>
 
   <div class="offer-cards-container">
-    <% unless @bookings_as_artist.nil? %>
   <% @offers.each do |offer| %>
     <div class="offer-card">
       <% if offer.banner.attached? %>
@@ -29,7 +28,6 @@
       </div>
     </div>
   <% end %>
-      <% end %>
 </div>
 </div>
 

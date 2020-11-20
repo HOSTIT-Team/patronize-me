@@ -1,6 +1,7 @@
 <div class="container">
   <div class="search-bar"></div>
   <div class="bookings-requests-cards-container">
+    <%= current_user.email %>
     <h2><strong>Bookings placed by you</strong> </h2>
     <% @bookings_requests.each do |booking| %>
       <div class="booking-card">
@@ -34,7 +35,7 @@
         <div class="booking-card">
         <div class="booking-card-image">
         <div class="booking-card-info">
-             <h4><%= booking.offer.title %></h4>
+          <h4><%= booking.offer.title %></h4>
           <p><i class="fas fa-hashtag"></i> <%= booking.offer.category %></p>
           <p><i class="fas fa-euro-sign"> <%= booking.offer.price %></i></p>
           <p><i class="fas fa-map-marker"> <%= booking.day %></i></p>
@@ -43,10 +44,9 @@
           <% if booking.status == 'Pending' %>
               <i class="fas fa-calendar-minus", style="color: orange"> <%= booking.status %></i>
  <%= link_to "Accept booking", accept_path(booking), method: :patch, data: { confirm: "Do you want to accept this booking?" }, class: 'btn btn-success ml-8' %>
- <%= link_to "Decline booking", reject_path(booking), method: :patch, data: { confirm: "Do you want to reject this booking?" }, class: 'btn btn-success ml-8' %>
-
- <%= link_to "Delete booking", booking_path(booking), method: :delete, data: { confirm: "Do you want to decline this booking?" }, class: 'btn btn-danger ml-8' %>
-  <% elsif booking.status == "Accepted" %>
+ <%= link_to "Decline booking", reject_path(booking), method: :patch, data: { confirm: "Do you want to decline this booking?" }, class: 'btn btn-danger ml-8' %>
+ <%= link_to "Delete booking", booking_path(booking), method: :delete, data: { confirm: "Do you want to decline this booking?" }, id:"deletebutton", class: 'btn btn-danger ml-8'%>
+ <% elsif booking.status == "Accepted" %>
              <i class="fas fa-calendar-check" , style="color: green"> <%= booking.status %></i>
              <% else %>
               <i class="fas fa-calendar-times" , style="color: red"> <%= booking.status %></i>

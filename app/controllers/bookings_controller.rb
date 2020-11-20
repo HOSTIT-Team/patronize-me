@@ -61,6 +61,8 @@ class BookingsController < ApplicationController
       flash.alert = "Request to change booking not submitted. Please check inputs."
     end
 
+  end
+
   def destroy
     authorize @booking
     @booking.destroy
