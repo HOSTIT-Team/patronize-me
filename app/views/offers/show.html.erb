@@ -1,14 +1,10 @@
-<section id=offer-pic>
+<section id=info-booking>
+<div id=offer-pic>
   <% if @offer.banner.attached? %>
     <%= cl_image_tag @offer.banner.key %>
   <% else %>
     NO IMAGE HERE
   <% end %>
-</section>
-
-<section id=info-booking>
-<div id="offer-pic">
-  <%= cl_image_tag @offer.banner.key %>
 </div>
 <div class="container">
   <%= link_to offers_path, class: "back" do %>
