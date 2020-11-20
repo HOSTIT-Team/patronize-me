@@ -1,10 +1,10 @@
  <div class="container">
   <div class="search-bar">
     <h4>Search more artists</h4>
-    <%= simple_form_for @offer do |f| %>
-    <%= f.input :category, :label => "Artform", collection: Offer::CATEGORY %>
-    <%= f.input :city, :label => "Location", collection: Offer::CITY %>
-    <%= f.submit "Search", class: "btn devise-button" %>
+    <%= simple_form_for Offer.new, method: :get do |f| %>
+    <%= f.select :category, Offer::CATEGORY, include_blank: true %>
+    <%= f.select :city, Offer::CITY, include_blank: true %>
+    <%= f.submit "Search"%>
     <% end %>
   </div>
 
