@@ -1,5 +1,7 @@
 class BookingsController < ApplicationController
-  before_action :find_booking, only: [:show, :destroy, :edit, :update, :decline]
+
+  before_action :find_booking, only: [:show, :destroy, :accept, :reject, :edit, :update, :decline]
+
   skip_before_action :authenticate_user!, only: :index
 
   def index
@@ -37,14 +39,18 @@ class BookingsController < ApplicationController
     end
   end
 
-  def decline
-    @booking.status = "Declined"
-    if @booking.save
-      redirect_to bookings_path
-    else
-      redirect_to bookings_path
-      flash.alert = "Booking request could not be declined"
-    end
+  def accept
+    authorize @booking
+    @booking.status = 'Accepted'
+    @booking.save
+    redirect_to bookings_path
+  end
+
+  def reject
+    authorize @booking
+    @booking.status = 'Declined'
+    @booking.save
+    redirect_to bookings_path
   end
 
   def edit
@@ -60,6 +66,7 @@ class BookingsController < ApplicationController
       render :edit
       flash.alert = "Request to change booking not submitted. Please check inputs."
     end
+
   end
 
   def destroy
