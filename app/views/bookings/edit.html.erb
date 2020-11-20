@@ -2,7 +2,7 @@
   <h1>Edit Booking Request</h1>
   <%= simple_form_for @booking do |f| %>
     <%= f.input :day, :label => "Event date"  %>
-    <%= f.input :patron_address, :label => "Where should the artist perform?" %>
+    <%= f.input :patron_address, :label => "What location do you want the artist to perform/deliver his work to?" %>
     <%= f.input :comment, :label => "Is there anything else the artist should know?" %>
     <%= f.submit "Update booking", class: "btn-devise" %>
   <% end %>
