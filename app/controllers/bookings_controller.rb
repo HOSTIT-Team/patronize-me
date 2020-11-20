@@ -1,6 +1,6 @@
 class BookingsController < ApplicationController
 
-  before_action :find_booking, only: [:show, :destroy, :accept, :reject, :edit, :update]
+  before_action :find_booking, only: [:show, :destroy, :accept, :reject, :edit, :update, :decline]
 
   skip_before_action :authenticate_user!, only: :index
 
@@ -11,6 +11,12 @@ class BookingsController < ApplicationController
     if @artist
       @my_offers = current_user.offers
       @bookings_as_artist = Booking.where(offer_id: @my_offers.pluck(:id))
+      @markers = @bookings_as_artist.geocoded.map do |booking|
+        {
+          lat: booking.latitude,
+          lng: booking.longitude
+        }
+      end
     end
   end
 
@@ -76,6 +82,6 @@ class BookingsController < ApplicationController
   end
 
   def booking_params
-    params.require(:booking).permit(:status, :day, :comment)
+    params.require(:booking).permit(:status, :day, :comment, :patron_address)
   end
 end

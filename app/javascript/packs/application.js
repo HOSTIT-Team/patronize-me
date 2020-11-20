@@ -30,7 +30,9 @@ import "bootstrap";
 // import { initSelect2 } from '../components/init_select2';
 
 import { initSlides } from '../plugins/slides.js';
+import { initMapbox } from '../plugins/init_mapbox';
 
 document.addEventListener('turbolinks:load', () => {
   initSlides();
+  initMapbox();
 })
