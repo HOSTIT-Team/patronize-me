@@ -1,6 +1,10 @@
 <section id=offer-pic>
-  <%= cl_image_tag @offer.banner.key %>
-</sec.tion>
+  <% if @offer.banner.attached? %>
+    <%= cl_image_tag @offer.banner.key %>
+  <% else %>
+    NO IMAGE HERE
+  <% end %>
+</section>
 
 <section id=info-booking>
 <div class="container">
@@ -24,7 +28,7 @@
 
 <% if @offer.user != current_user %>
   <div class=booking>
-    <% if policy(Booking).create? %>
+    <% if policy(@booking).create? %>
         <h1>Make a booking request</h1>
         <%= simple_form_for([@offer, @booking]) do |f| %>
         <%= f.input :day, :label => "Event date"  %>

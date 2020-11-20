@@ -19,7 +19,7 @@ class OffersController < ApplicationController
 
   def show
     authorize @offer
-    @booking = Booking.new(booking_params)
+    @booking = Booking.new #Booking.new(booking_params)
     @booking.user = current_user
     if @booking.save
       redirect_to bookings_path(@booking)
@@ -82,7 +82,7 @@ class OffersController < ApplicationController
     params.require(:offer).permit(:title, :category, :price, :description, :city, :delivery_type, :banner)
   end
 
-  def booking_params
-    params.permit(:status, :day, :comment)
-  end
+  # def booking_params
+  #   params.permit(:status, :day, :comment)
+  # end
 end
