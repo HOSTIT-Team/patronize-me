@@ -1,15 +1,35 @@
-<%= current_user.email %>
-
 <div class="container">
-  <div class="search-bar">
-    </div>
+  <div class="search-bar"></div>
   <div class="bookings-requests-cards-container">
-    <h2> Bookings you placed </h2>
+    <h2><strong>Bookings placed by you</strong> </h2>
     <% @bookings_requests.each do |booking| %>
       <div class="booking-card">
         <div class="booking-card-image">
         <div class="booking-card-info">
-          <div id="map"
+          <h4><%= booking.offer.title %></h4>
+          <p><i class="fas fa-hashtag"></i> <%= booking.offer.category %></p>
+          <p><i class="fas fa-euro-sign"> <%= booking.offer.price %></i></p>
+          <p><i class="far fa-calendar-alt"></i> <%= booking.day %></i></p>
+          <p><i class="fas fa-map-marker-alt"></i> <%= booking.patron_address %></i></p>
+          <p><i class="far fa-comment-alt"></i> <%= booking.comment %></i></p>
+          <% if booking.status == "pending" %>
+            <i class="fas fa-calendar-minus", style="color: orange"> <%= booking.status %></i>
+          <% elsif booking.status == "Accepted" %>
+           <i class="fas fa-calendar-check" , style="color: green"> <%= booking.status %></i>
+          <% else %>
+            <i class="fas fa-calendar-times" , style="color: red"> <%= booking.status %></i>
+          <% end %>
+          <%= link_to "Edit booking request", edit_booking_path(booking), class: 'btn devise-button' %>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</div>
+<hr>
+<div class="container">
+  <div class="bookings-requests-cards-container">
+    <h2><strong>Bookings requested by patrons</strong></h2>
+    <div id="map"
             style="width: 100%; height: 200px;"
             data-markers="<%= {
               lat: booking.latitude,
@@ -17,47 +37,32 @@
             }.to_json %>"
             data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>">
           </div>
-          <h4><%= booking.offer.title %></h4>
-          <p><i class="fas fa-hashtag"></i> <%= booking.offer.category %></p>
-          <p><i class="fas fa-euro-sign"> <%= booking.offer.price %></i></p>
-          <p><i class="far fa-calendar-alt"></i> <%= booking.day %></i></p>
-          <p><i class="fas fa-map-marker-alt"></i> <%= booking.patron_address %></i></p>
-          <% if booking.status == "pending" %>
-            <i class="fas fa-calendar-minus", style="color: orange"> <%= booking.status %></i>
-          <% elsif booking.status == "approved" %>
-           <i class="fas fa-calendar-check" , style="color: green"> <%= booking.status %></i>
-          <% else %>
-            <i class="fas fa-calendar-times" , style="color: red"> <%= booking.status %></i>
-          <% end %>
-        </div>
-      </div>
-      </div>
-    <% end %>
-  </div>
-  <br>
-</div>
-
-
-
-  <div class="bookings-requests-cards-container">
-           <h2>  Bookings requested by patrons </h2>
     <% @bookings_as_artist.each do |booking| %>
       <div class="booking-card">
         <div class="booking-card-image">
-        <div class="booking-card-info">
-             <h4><%= booking.offer.title %></h4>
-          <p><i class="fas fa-hashtag"></i> <%= booking.offer.category %></p>
-          <p><i class="fas fa-euro-sign"> <%= booking.offer.price %></i></p>
-          <p><i class="fas fa-map-marker"> <%= booking.day %></i></p>
-          <p><i class="fas fa-map-marker"> <%= booking.status %></i></p>
- <%= link_to "Decline booking", booking_path(booking), method: :delete, data: { confirm: "Do you want to decline this booking?" }, class: 'btn btn-danger ml-8' %>
-
-
+          <div class="booking-card-info">
+            <h4><%= booking.offer.title %></h4>
+            <p><i class="fas fa-hashtag"></i> <%= booking.offer.category %></p>
+            <p><i class="fas fa-euro-sign"> <%= booking.offer.price %></i></p>
+            <p><i class="fas fa-calendar-alt"> <%= booking.day %></i></p>
+            <p><i class="fas fa-map-marker-alt"></i> <%= booking.patron_address %></i></p>
+            <p><i class="far fa-comment-alt"> </i> <%= booking.comment %></i></p>
+            <% if booking.status == "pending" %>
+              <i class="fas fa-calendar-minus", style="color: orange"> <%= booking.status %></i>
+            <% elsif booking.status == "Accepted" %>
+             <i class="fas fa-calendar-check" , style="color: green"> <%= booking.status %></i>
+            <% else %>
+              <i class="fas fa-calendar-times" , style="color: red"> <%= booking.status %></i>
+            <% end %>
+            <br>
+            <%= link_to "Decline booking", booking_path(booking), method: :delete, data: { confirm: "Do you want to decline this booking?" }, class: 'btn devise-button' %>
+          </div>
         </div>
-      </div>
       </div>
     <% end %>
   </div>
+</div>
+
 
 
 
