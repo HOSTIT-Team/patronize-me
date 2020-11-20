@@ -1,5 +1,5 @@
 class BookingsController < ApplicationController
-  before_action :find_booking, only: [:show, :destroy, :edit, :update]
+  before_action :find_booking, only: [:show, :destroy, :edit, :update, :decline]
   skip_before_action :authenticate_user!, only: :index
 
   def index
@@ -34,6 +34,16 @@ class BookingsController < ApplicationController
     else
       render "offers/show"
       flash.alert = "Booking request not created. Please check inputs."
+    end
+  end
+
+  def decline
+    @booking.status = "rejected"
+    if @booking.save
+      redirect_to bookings_path
+    else
+      redirect_to bookings_path
+      flash.alert = "Booking request could not be rejected"
     end
   end
 
