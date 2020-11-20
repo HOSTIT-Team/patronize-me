@@ -40,7 +40,7 @@ end
 
   def reject
     authorize @booking
-    @booking.status = 'Rejected'
+    @booking.status = 'Declined'
     @booking.save
     redirect_to bookings_path
   end

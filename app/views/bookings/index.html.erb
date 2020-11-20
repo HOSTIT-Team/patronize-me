@@ -13,9 +13,9 @@
           <p><i class="fas fa-hashtag"></i> <%= booking.offer.category %></p>
           <p><i class="fas fa-euro-sign"> <%= booking.offer.price %></i></p>
           <p><i class="fas fa-map-marker"> <%= booking.day %></i></p>
-          <% if booking.status == "pending" %>
+          <% if booking.status == "Pending" %>
             <i class="fas fa-calendar-minus", style="color: orange"> <%= booking.status %></i>
-          <% elsif booking.status == "approved" %>
+          <% elsif booking.status == "Approved" %>
            <i class="fas fa-calendar-check" , style="color: green"> <%= booking.status %></i>
           <% else %>
             <i class="fas fa-calendar-times" , style="color: red"> <%= booking.status %></i>
@@ -42,7 +42,7 @@
           <p><i class="fas fa-euro-sign"> <%= booking.offer.price %></i></p>
           <p><i class="fas fa-map-marker"> <%= booking.day %></i></p>
           <p><i class="fas fa-map-marker"> <%= booking.status %></i></p>
-          <% if booking.status == 'pending' %>
+          <% if booking.status == 'Pending' %>
  <%= link_to "Accept booking", accept_path(booking), method: :patch, data: { confirm: "Do you want to accept this booking?" }, class: 'btn btn-success ml-8' %>
  <%= link_to "Decline booking", reject_path(booking), method: :patch, data: { confirm: "Do you want to reject this booking?" }, class: 'btn btn-success ml-8' %>
 
