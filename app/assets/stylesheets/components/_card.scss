@@ -15,6 +15,21 @@
     background-size: cover;
     position: relative;
   }
+.booking-card{
+  margin-bottom: 10px;
+}
+.booking-card-image {
+    height: 380px;
+    background-size: cover;
+  }
+
+.banana{
+    height: 380px;
+    background-size: cover;
+    position: relative;
+    margin-bottom: 10px;
+    margin-top: 10px;
+  }
 
 .offer-card-info {
   display: flex;
@@ -29,6 +44,17 @@
   right: 0px;
   bottom: 40px;
   height: 200px;
+}
+
+.booking-card-info {
+  display: flex;
+  flex-direction: column;
+  background-color: white;
+  color: black;
+  font-weight: normal;
+  border-radius: 5px 0 0 5px;
+  width: 260px;
+  padding: 10px;
 }
 
 .offer-card-button {
