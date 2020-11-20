@@ -1,6 +1,7 @@
 <section class="hero-offer">
  <div class="container">
   <div class="search-bar">
+<<<<<<< HEAD
     <h2 id=offerpage-title> Get Inspired.</h2>
     <%= form_tag offers_path, method: :get do %>
     <%= text_field_tag :category,
@@ -15,6 +16,14 @@
   %>
   <%= submit_tag "SEARCH", class: "offer-button-search" %>
 <% end %>
+=======
+    <h4>Search more artists</h4>
+    <%= simple_form_for Offer.new, method: :get do |f| %>
+    <%= f.select :category, Offer::CATEGORY, include_blank: true %>
+    <%= f.select :city, Offer::CITY, include_blank: true %>
+    <%= f.submit "Search"%>
+    <% end %>
+>>>>>>> main
   </div>
 </section>
 
