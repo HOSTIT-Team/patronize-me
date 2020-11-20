@@ -38,12 +38,12 @@ class BookingsController < ApplicationController
   end
 
   def decline
-    @booking.status = "rejected"
+    @booking.status = "Declined"
     if @booking.save
       redirect_to bookings_path
     else
       redirect_to bookings_path
-      flash.alert = "Booking request could not be rejected"
+      flash.alert = "Booking request could not be declined"
     end
   end
 
