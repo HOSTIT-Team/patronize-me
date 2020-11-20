@@ -2,11 +2,13 @@
   <div class="container">
     <div class="search-bar">
       <h2 id=offerpage-title> Get Inspired.</h2>
-      <h6> Select a Category and City </h6>
-      <%= simple_form_for Offer.new, method: :get do |f| %>
-      <%= f.select :category, Offer::CATEGORY, include_blank: true %>
-      <%= f.select :city, Offer::CITY, include_blank: true %>
-      <%= f.submit "SEARCH", class: "offer-button-search" %>
+      <h6> Please, select Category & City: </h6>
+      <div id="search-form">
+        <%= simple_form_for Offer.new, method: :get do |f| %>
+        <%= f.select :category, Offer::CATEGORY, include_blank: true, class: "dropdown-form" %>
+        <%= f.select :city, Offer::CITY, include_blank: true, class: "dropdown-form" %>
+        <%= f.submit "SEARCH", class: "offer-button-search" %>
+      </div>
       <% end %>
     </div>
   </div>
@@ -25,9 +27,9 @@
             <div class="offer-card-info">
               <p><%= offer.title %></p>
               <ul>
-                <li></i> <%= offer.category %></li>
-                <li><%= offer.price %>€</i></li>
-                <li>📍 <%= offer.city %></i></li>
+                <li></i> Category:<b> <%= offer.category %> </b> </li>
+                <li>Price: <%= offer.price %>€</i></li>
+                <li><i class="fas fa-map-marker-alt"></i> <%= offer.city %></i></li>
               </ul>
               <%= link_to "BOOK ME", offer_path(offer), class: "btn offer-card-button"%>
             </div>
@@ -35,7 +37,7 @@
         </div>
       <% end %>
     </div>
-  <% else %> 
+  <% else %>
       <div id="no-result">No results for your search criteria</div>
   <% end %>
 </section>
