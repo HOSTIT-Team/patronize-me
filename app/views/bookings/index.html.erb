@@ -1,20 +1,23 @@
 <div class="container">
   <div class="search-bar"></div>
-
-
-  <div class="bookings-requests-cards-container">
+  <div class="section-main">
     <%= current_user.email %>
     <h2><strong>Bookings placed by you</strong> </h2>
     <% @bookings_requests.each do |booking| %>
       <div class="booking-card">
+        <% if booking.offer.banner.attached? %>
+            <div class="banana" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('<%= cl_image_path offer.banner.key, height: 300, width: 400, crop: :fill %>')">
+          <% else %>
+            <div class="banana" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(https://images.unsplash.com/photo-1583376097610-516c37bb66ba?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=668&q=80)">
+          <% end %>
         <div class="booking-card-image">
           <div class="booking-card-info">
             <h4><%= booking.offer.title %></h4>
-            <p><i class="fas fa-hashtag"></i> <%= booking.offer.category %></p>
-            <p><i class="fas fa-map-marker"> <%= booking.day %></i></p>
-            <p><i class="fas fa-euro-sign"> <%= booking.offer.price %></i></p>
-            <p><i class="fas fa-map-marker-alt"></i> <%= booking.patron_address %></i></p>
-            <p><i class="fas fa-info"> <%= booking.comment %></i></p>
+            <ul>
+                <li></i> Category:<b> <%= booking.offer.category %> </b> </li>
+                <li>Price: <%= booking.offer.price %>€</i></li>
+                <li></i> Category:<b> <%= booking.patron_address %> </b> </li>
+                <li></i> Comment:<b> <%= booking.comment %> </b> </li>
             <% if booking.status == "Pending" %>
              <br>
             <%= link_to "Edit booking request", edit_booking_path(booking), class: 'btn devise-button' %>
@@ -24,14 +27,14 @@
             <% else %>
               <i class="fas fa-calendar-times" , style="color: red"> <%= booking.status %></i>
             <% end %>
-
+            </ul>
           </div>
         </div>
       </div>
     <% end %>
   </div>
   <hr>
-  <div class="bookings-requests-cards-container">
+  <div class="section-main">
     <h2><strong>Bookings requested by patrons</strong></h2>
     <% unless @bookings_as_artist.nil? %>
     <div id="map"
@@ -40,15 +43,19 @@
      data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>"></div>
       <% @bookings_as_artist.each do |booking| %>
         <div class="booking-card">
+          <% if booking.offer.banner.attached? %>
+            <div class="banana" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('<%= cl_image_path offer.banner.key, height: 300, width: 400, crop: :fill %>')">
+          <% else %>
+            <div class="banana" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(https://images.unsplash.com/photo-1583376097610-516c37bb66ba?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=668&q=80)">
+          <% end %>
           <div class="booking-card-image">
             <div class="booking-card-info">
               <h4><%= booking.offer.title %></h4>
-              <p><i class="fas fa-hashtag"></i> <%= booking.offer.category %></p>
-              <p><i class="fas fa-euro-sign"> <%= booking.offer.price %></i></p>
-              <p><i class="fas fa-map-marker"> <%= booking.day %></i></p>
-              <p><i class="fas fa-map-marker-alt"></i> <%= booking.patron_address %></i></p>
-              <p><i class="fas fa-map-marker"> <%= booking.status %></i></p>
-              <p><i class="fas fa-info"> <%= booking.comment %></i></p>
+       <li></i> Category:<b> <%= booking.offer.category %> </b> </li>
+                <li>Price: <%= booking.offer.price %>€</i></li>
+                <li></i> Category:<b> <%= booking.patron_address %> </b> </li>
+                <li></i> Comment:<b> <%= booking.comment %> </b> </li>
+                <p><i class="fas fa-info"> <%= booking.comment %></i></p>
               <% if booking.status == 'Pending' %>
                 <i class="fas fa-calendar-minus", style="color: orange"> <%= booking.status %></i>
                 <%= link_to "Accept booking", accept_path(booking), method: :patch, data: { confirm: "Do you want to accept this booking?" }, class: 'btn btn-success ml-8' %>
